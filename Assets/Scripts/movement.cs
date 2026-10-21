@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 public class Movement : MonoBehaviour
 {
     Rigidbody2D rb;
@@ -15,8 +16,16 @@ public class Movement : MonoBehaviour
     [SerializeField] public float jumpPower;
     [SerializeField] public float jumpGravity;
     private bool jumpRequested = false;
-    private float orientationAngle = (3*Mathf.PI)/2;
-    private float stickyRadius = 1.2;
+
+    // Wall walking Variables
+    [SerializeField] private LayerMask groundLayerMask;
+    [SerializeField] float stickyRadius = 1f;
+    private float orientationAngle;
+
+    [SerializeField] private float surfaceHangTime = 0.45f;
+    private float surfaceLostTimer = 0f;
+    private Vector2 lastValidNormal = Vector2.up;
+    private float jumpLockoutTimer = 0f;
 
     void Awake() // Apparently good practice to use for fetching other components part of the same game object, runs before Start()
     {
@@ -27,7 +36,6 @@ public class Movement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
         rb.freezeRotation = true;
@@ -42,7 +50,7 @@ public class Movement : MonoBehaviour
     }
     void FixedUpdate()
     {
-
+        orientationAngle = (transform.eulerAngles.z - 90f) * Mathf.Deg2Rad;
         Vector2 input = moveAction.ReadValue<Vector2>();
         Vector2 targetVelocity = transform.right*(input.x * maxSpeed); // restricts movement to left and right keys
         rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, targetVelocity, acceleration * Time.deltaTime);
@@ -52,31 +60,41 @@ public class Movement : MonoBehaviour
             PerformJump();
             jumpRequested = false;
         }
-    }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        if (collision.gameObject.CompareTag("Wall"))
+        if (jumpLockoutTimer > 0f)
         {
-            jumpIndicator.FreezeIndicator();
-            // normal direction of surface
-            Vector2 normal = collision.GetContact(0).normal;
+            jumpLockoutTimer -= Time.fixedDeltaTime;
+        }
 
-            // calculate rotation angle to align 'up' with wall normal
-            float angle = Mathf.Atan2(normal.y, normal.x) * Mathf.Rad2Deg -90f;
-            transform.rotation = Quaternion.Euler(0,0, angle);
+        Vector2 normal = DetectSurface(20, Mathf.PI, lastValidNormal);
+        if (jumpLockoutTimer > 0f)
+        {
+            normal = Vector2.zero;
+            surfaceLostTimer = 0f;
+        }
+        else if (normal != Vector2.zero)
+        {
+            lastValidNormal = normal;
+            surfaceLostTimer = surfaceHangTime;
+        }
+        else if (surfaceLostTimer > 0f)
+        {
+            surfaceLostTimer -= Time.fixedDeltaTime;
+            normal = lastValidNormal;
+        }
 
-            rb.gravityScale =0;
+        if (normal != Vector2.zero)
+        {
+            float angle = Mathf.Atan2(normal.y, normal.x) * Mathf.Rad2Deg - 90f;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+            rb.gravityScale = 0;
             rb.AddForce(-normal * 9.81f, ForceMode2D.Force);
-            jumpIndicator.UnfreezeIndicator();
         }
-    }
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Wall") && jumpRequested){
-            rb.gravityScale = jumpGravity;
+        else
+        {
+            rb.gravityScale=jumpGravity;
         }
+
     }
 
     void PerformJump()
@@ -88,35 +106,42 @@ public class Movement : MonoBehaviour
         Vector2 currentVel = rb.linearVelocity;
 
         rb.linearVelocity = currentVel + jumpVelocity;
+        surfaceLostTimer = 0f;
+        jumpLockoutTimer = 0.2f;
     }
 
-    RayCastHit2D[] getRays(int rayCount, float raySpread)
+    RaycastHit2D[] getRays(int rayCount, float raySpread)
     {
         float spread = raySpread / (rayCount - 1);
-        RayCastHit2D[] rayDirections = new RayCastHit2D[rayCount];
-        for (int i=0; i<rayCount; i++)
+        float halfSpread = raySpread / 2f;
+        RaycastHit2D[] rayDirections = new RaycastHit2D[rayCount];
+
+        for (int i = 0; i < rayCount; i++)
         {
-            float currentRayAngle = i*spread;
+            float currentRayAngle = (i * spread) - halfSpread;
             Vector2 rayDirection = new Vector2(
-                Mathf.Cos(orientationAngle+currentRayAngle),
-                Mathf.Sin(orientationAngle+currentRayAngle)
+                Mathf.Cos(orientationAngle + currentRayAngle),
+                Mathf.Sin(orientationAngle + currentRayAngle)
             );
-            RayCast2D hit = Physics2D.Raycast(transform.position, rayDirection, stickyRadius, groundLayerMask);
-            if (hit){
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, stickyRadius, groundLayerMask);
+            if (hit)
+            {
                 rayDirections[i] = hit;
             }
         }
         return rayDirections;
     }
 
-    void DetectSurface(int rayCount, float raySpread)
+    Vector2 DetectSurface(int rayCount, float raySpread, Vector2 currentNormal)
     {
         RaycastHit2D[] rays = getRays(rayCount, raySpread);
-        List<(Vector2, Vector2)> surfaces = new List<(Vector2, Vector2)>();
+        List<(Vector2 start, Vector2 end, Vector2 normal)> surfaces = new List<(Vector2, Vector2, Vector2)>();
 
         bool isTracking = false;
         Vector2 startPoint = default;
         Vector2 endPoint = default;
+        Vector2 accumulatedNormal = Vector2.zero;
+        int hitCount = 0;
 
         for (int i = 0; i < rays.Length; i++)
         {
@@ -128,36 +153,43 @@ public class Movement : MonoBehaviour
                 {
                     isTracking = true;
                     startPoint = rays[i].point;
+                    accumulatedNormal = Vector2.zero;
+                    hitCount = 0;
                 }
                 endPoint = rays[i].point;
+                accumulatedNormal += rays[i].normal;
+                hitCount++;
             }
 
             if (isTracking && (!hasHit || i == rays.Length - 1))
             {
-                surfaces.Add((startPoint, endPoint));
+                Vector2 avgNormal = hitCount > 0 ? (accumulatedNormal / hitCount).normalized : Vector2.up;
+                surfaces.Add((startPoint, endPoint, avgNormal));
                 isTracking = false;
             }
         }
 
-        float currentMinDistance = Mathf.Infinity;
-        float currentDistance;
-        (Vector2, Vector2) closestSurface = default;
-        foreach((Vector2, Vector2) surface in surfaces)
-        {
+        float currentMinScore = Mathf.Infinity;
+        Vector2 bestNormal = Vector2.zero;
 
+        foreach (var surface in surfaces)
+        {
             Vector2 midpoint = new Vector2(
-                (surface.Item1.x + surface.Item2.x) / 2f,
-                (surface.Item1.y + surface.Item2.y) / 2f
+                (surface.start.x + surface.end.x) / 2f,
+                (surface.start.y + surface.end.y) / 2f
             );
-            currentDistance = Vector2.SqrMagnitude(transform.position - midpoint);
-            if (currentDistance < currentMinDistance)
+            float currentDistance = Vector2.SqrMagnitude((Vector2)transform.position - midpoint);
+
+            // when deciding what surface to stick to this favours the current surface
+            float score = currentDistance - (Vector2.Dot(surface.normal, currentNormal) * 0.4f);
+
+            if (score < currentMinScore)
             {
-                currentMinDistance = currentDistance;
-                closestSurface = surface;
+                currentMinScore = score;
+                bestNormal = surface.normal;
             }
         }
 
-        Vector2 normal = new Vector2(-(closestSurface.Item1.y - closestSurface.Item2.y), (closestSurface.Item1.x - closestSurface.Item2.x));
-        normal = normal.normalized;
+        return bestNormal;
     }
 }
