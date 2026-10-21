@@ -15,7 +15,8 @@ public class Movement : MonoBehaviour
     [SerializeField] public float jumpPower;
     [SerializeField] public float jumpGravity;
     private bool jumpRequested = false;
-
+    private float orientationAngle = (3*Mathf.PI)/2;
+    private float stickyRadius = 1.2;
 
     void Awake() // Apparently good practice to use for fetching other components part of the same game object, runs before Start()
     {
@@ -87,9 +88,74 @@ public class Movement : MonoBehaviour
         rb.linearVelocity = currentVel + jumpVelocity;
     }
 
-    void DetectSurface(int rayCount)
+    RayCastHit2D[] getRays(int rayCount, float raySpread)
     {
-        float raySpread = Mathf.PI / rayCount - 1;
+        float spread = raySpread / (rayCount - 1);
+        RayCastHit2D[] rayDirections = new RayCastHit2D[rayCount];
+        for (int i=0; i<rayCount; i++)
+        {
+            float currentRayAngle = i*spread;
+            Vector2 rayDirection = new Vector2(
+                Mathf.Cos(orientationAngle+currentRayAngle),
+                Mathf.Sin(orientationAngle+currentRayAngle)
+            );
+            RayCast2D hit = Physics2D.Raycast(transform.position, rayDirection, stickyRadius, groundLayerMask);
+            if (hit){
+                rayDirections[i] = hit;
+            }
+        }
+        return rayDirections;
+    }
 
+    void DetectSurface(int rayCount, float raySpread)
+    {
+        RaycastHit2D[] rays = getRays(rayCount, raySpread);
+        List<(Vector2, Vector2)> surfaces = new List<(Vector2, Vector2)>();
+
+        bool isTracking = false;
+        Vector2 startPoint = default;
+        Vector2 endPoint = default;
+
+        for (int i = 0; i < rays.Length; i++)
+        {
+            bool hasHit = rays[i].collider != null;
+
+            if (hasHit)
+            {
+                if (!isTracking)
+                {
+                    isTracking = true;
+                    startPoint = rays[i].point;
+                }
+                endPoint = rays[i].point;
+            }
+
+            if (isTracking && (!hasHit || i == rays.Length - 1))
+            {
+                surfaces.Add((startPoint, endPoint));
+                isTracking = false;
+            }
+        }
+
+        float currentMinDistance = Mathf.Infinity;
+        float currentDistance;
+        (Vector2, Vector2) closestSurface = default;
+        foreach((Vector2, Vector2) surface in surfaces)
+        {
+
+            Vector2 midpoint = new Vector2(
+                (surface.Item1.x + surface.Item2.x) / 2f,
+                (surface.Item1.y + surface.Item2.y) / 2f
+            );
+            currentDistance = Vector2.SqrMagnitude(transform.position - midpoint);
+            if (currentDistance < currentMinDistance)
+            {
+                currentMinDistance = currentDistance;
+                closestSurface = surface;
+            }
+        }
+
+        Vector2 normal = new Vector2(-(closestSurface.Item1.y - closestSurface.Item2.y), (closestSurface.Item1.x - closestSurface.Item2.x));
+        normal = normal.normalized;
     }
 }
