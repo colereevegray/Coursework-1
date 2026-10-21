@@ -73,9 +73,7 @@ public class Movement : MonoBehaviour
     }
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall") && jumpRequested){
-            rb.gravityScale = jumpGravity;
-        }
+        rb.gravityScale = jumpGravity;
     }
 
     void PerformJump()
@@ -92,5 +90,6 @@ public class Movement : MonoBehaviour
     void DetectSurface(int rayCount)
     {
         float raySpread = Mathf.PI / rayCount - 1;
+
     }
 }
