@@ -86,4 +86,9 @@ public class Movement : MonoBehaviour
 
         rb.linearVelocity = currentVel + jumpVelocity;
     }
+
+    void DetectSurface(int rayCount)
+    {
+        float raySpread = Mathf.PI / rayCount - 1;
+    }
 }
