@@ -74,7 +74,9 @@ public class Movement : MonoBehaviour
     }
     void OnCollisionExit2D(Collision2D collision)
     {
-        rb.gravityScale = jumpGravity;
+        if (collision.gameObject.CompareTag("Wall") && jumpRequested){
+            rb.gravityScale = jumpGravity;
+        }
     }
 
     void PerformJump()
