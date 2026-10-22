@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
     InputAction moveAction;
     InputAction jumpAction;
+    Collider2D  col;
     // Left/Right Movement variables
     [SerializeField] public float acceleration = 25f ;
     [SerializeField] public float maxSpeed = 8f;
@@ -18,9 +19,9 @@ public class Movement : MonoBehaviour
     private bool jumpRequested = false;
 
     // Wall walking Variables
+    [SerializeField] private int rayNumber;
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] float stickyRadius = 1f;
-    private float orientationAngle;
 
     [SerializeField] private float surfaceHangTime = 0.45f;
     private float surfaceLostTimer = 0f;
@@ -30,6 +31,7 @@ public class Movement : MonoBehaviour
     void Awake() // Apparently good practice to use for fetching other components part of the same game object, runs before Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
         jumpIndicator = GetComponentInChildren<JumpIndicator>();
     }
 
@@ -50,15 +52,19 @@ public class Movement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        orientationAngle = (transform.eulerAngles.z - 90f) * Mathf.Deg2Rad;
+        // orientationAngle = (transform.eulerAngles.z - 90f) * Mathf.Deg2Rad;
         Vector2 input = moveAction.ReadValue<Vector2>();
         Vector2 targetVelocity = transform.right*(input.x * maxSpeed); // restricts movement to left and right keys
         rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, targetVelocity, acceleration * Time.deltaTime);
+        Vector2 normal = DetectSurface(rayNumber, 2.5f*Mathf.PI/3, lastValidNormal);
 
         if (jumpRequested)
         {
             PerformJump();
             jumpRequested = false;
+            // orientationAngle = Mathf.Atan(rb.linearVelocity.y/rb.linearVelocity.x)*Mathf.Rad2Deg;
+            // lastValidNormal = new Vector2(1,1).normalized;
+            // normal = DetectSurface(rayNumber, Mathf.PI/3, lastValidNormal);
         }
 
         if (jumpLockoutTimer > 0f)
@@ -66,7 +72,21 @@ public class Movement : MonoBehaviour
             jumpLockoutTimer -= Time.fixedDeltaTime;
         }
 
-        Vector2 normal = DetectSurface(20, Mathf.PI, lastValidNormal);
+        if (jumpLockoutTimer > 0f && normal != Vector2.zero)
+        {
+            float surfaceSimilarity = Vector2.Dot(normal, lastValidNormal);
+            // check to see if a surface detected during jump is new, ignore it if nit
+            if (surfaceSimilarity > 0.5f)
+            {
+                normal = Vector2.zero;
+            }
+            else
+            {
+                // It's a brand new surface, cancel lockout to stick instantly
+                jumpLockoutTimer = 0f;
+            }
+        }
+
         if (jumpLockoutTimer > 0f)
         {
             normal = Vector2.zero;
@@ -81,18 +101,43 @@ public class Movement : MonoBehaviour
         {
             surfaceLostTimer -= Time.fixedDeltaTime;
             normal = lastValidNormal;
+            // normal = DetectSurface(rayNumber, Mathf.PI, lastValidNormal);
         }
 
         if (normal != Vector2.zero)
         {
             float angle = Mathf.Atan2(normal.y, normal.x) * Mathf.Rad2Deg - 90f;
+            Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
+
+            Quaternion newRotation = Quaternion.RotateTowards(
+                transform.rotation,
+                targetRotation,
+                600f * Time.fixedDeltaTime
+            );
+
+            Quaternion deltaRotation = newRotation * Quaternion.Inverse(transform.rotation);
+            rb.linearVelocity = deltaRotation * rb.linearVelocity;
+
             transform.rotation = Quaternion.Euler(0, 0, angle);
             rb.gravityScale = 0;
-            rb.AddForce(-normal * 9.81f, ForceMode2D.Force);
+            rb.AddForce(-normal * 10.81f, ForceMode2D.Force);
         }
         else
         {
             rb.gravityScale=jumpGravity;
+
+            if (rb.linearVelocity.sqrMagnitude > 0.1f)
+            {
+                float airAngle = -Mathf.Atan2(rb.linearVelocity.y, rb.linearVelocity.x) * Mathf.Rad2Deg - 90f;
+                Quaternion targetAirRotation = Quaternion.Euler(0, 0, airAngle);
+
+                transform.rotation = Quaternion.RotateTowards(
+                    transform.rotation,
+                    targetAirRotation,
+                    // 720f * Time.fixedDeltaTime
+                    15000f * Time.fixedDeltaTime
+                );
+            }
         }
 
     }
@@ -107,14 +152,33 @@ public class Movement : MonoBehaviour
 
         rb.linearVelocity = currentVel + jumpVelocity;
         surfaceLostTimer = 0f;
-        jumpLockoutTimer = 0.2f;
+        jumpLockoutTimer = 0.4f;
     }
 
     RaycastHit2D[] getRays(int rayCount, float raySpread)
     {
+        float activeRadius = stickyRadius;
+        if (jumpLockoutTimer > 0.1f)
+        {
+            raySpread *= 0.5f;
+            // activeRadius *= 2f;
+        }
+
         float spread = raySpread / (rayCount - 1);
         float halfSpread = raySpread / 2f;
         RaycastHit2D[] rayDirections = new RaycastHit2D[rayCount];
+        Vector2 rayOrigin = col != null ? (Vector2)col.bounds.center : (Vector2)transform.position;
+
+        // float orientationAngle = (transform.eulerAngles.z - 90f) * Mathf.Deg2Rad;
+        float orientationAngle;
+        if (jumpLockoutTimer > 0f && rb.linearVelocity.sqrMagnitude > 0.5f)
+        {
+            orientationAngle = Mathf.Atan2(rb.linearVelocity.y, rb.linearVelocity.x);
+        }
+        else
+        {
+            orientationAngle = (transform.eulerAngles.z - 90f) * Mathf.Deg2Rad;
+        }
 
         for (int i = 0; i < rayCount; i++)
         {
@@ -123,7 +187,9 @@ public class Movement : MonoBehaviour
                 Mathf.Cos(orientationAngle + currentRayAngle),
                 Mathf.Sin(orientationAngle + currentRayAngle)
             );
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, stickyRadius, groundLayerMask);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, activeRadius, groundLayerMask);
+
+            Debug.DrawRay(rayOrigin, rayDirection * activeRadius, hit ? Color.green : Color.red);
             if (hit)
             {
                 rayDirections[i] = hit;
@@ -134,6 +200,7 @@ public class Movement : MonoBehaviour
 
     Vector2 DetectSurface(int rayCount, float raySpread, Vector2 currentNormal)
     {
+        float rayCastDirection = Mathf.Atan2(currentNormal.y, currentNormal.x);
         RaycastHit2D[] rays = getRays(rayCount, raySpread);
         List<(Vector2 start, Vector2 end, Vector2 normal)> surfaces = new List<(Vector2, Vector2, Vector2)>();
 
@@ -171,17 +238,17 @@ public class Movement : MonoBehaviour
 
         float currentMinScore = Mathf.Infinity;
         Vector2 bestNormal = Vector2.zero;
-
+        Vector2 rayOrigin = col != null ? (Vector2)col.bounds.center : (Vector2)transform.position;
         foreach (var surface in surfaces)
         {
             Vector2 midpoint = new Vector2(
                 (surface.start.x + surface.end.x) / 2f,
                 (surface.start.y + surface.end.y) / 2f
             );
-            float currentDistance = Vector2.SqrMagnitude((Vector2)transform.position - midpoint);
+            float currentDistance = Vector2.SqrMagnitude(rayOrigin - midpoint);
 
             // when deciding what surface to stick to this favours the current surface
-            float score = currentDistance - (Vector2.Dot(surface.normal, currentNormal) * 0.4f);
+            float score = currentDistance - (Vector2.Dot(surface.normal, currentNormal) * 0.6f);
 
             if (score < currentMinScore)
             {
