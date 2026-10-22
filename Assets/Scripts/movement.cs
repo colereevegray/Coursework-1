@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using TMPro;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 public class Movement : MonoBehaviour
@@ -14,6 +15,8 @@ public class Movement : MonoBehaviour
 
     // Jump variables
     [SerializeField] private JumpIndicator jumpIndicator;
+    [SerializeField] private TextMeshProUGUI text_obj;
+    private float jumpCount;
     [SerializeField] public float jumpPower;
     [SerializeField] public float jumpGravity;
     private bool jumpRequested = false;
@@ -41,13 +44,16 @@ public class Movement : MonoBehaviour
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
         rb.freezeRotation = true;
+        jumpCount = 8;
     }
 
     void Update()
     {
-        if (jumpAction.WasPressedThisFrame())
+        if (jumpAction.WasPressedThisFrame() && jumpCount > 0)
         {
             jumpRequested = true;
+            jumpCount -= 1;
+            text_obj.text = "Number of legs: " + jumpCount.ToString();
         }
     }
     void FixedUpdate()

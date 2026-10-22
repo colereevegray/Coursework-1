@@ -261,6 +261,7 @@ MonoBehaviour:
   acceleration: 30
   maxSpeed: 10
   jumpIndicator: {fileID: 0}
+  text_obj: {fileID: 0}
   jumpPower: 30
   jumpGravity: 5
   rayNumber: 100
