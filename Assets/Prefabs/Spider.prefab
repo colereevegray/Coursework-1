@@ -104,14 +104,14 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54f9ada0ddee6e3479fc436226c544bb, type: 3}
   m_Name: BlastArrow
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
   lookAction:
     m_Name: Look
     m_Type: 0
-    m_ExpectedControlType: 
+    m_ExpectedControlType:
     m_Id: cc48a058-8f49-4f26-b08e-08acf0e860da
-    m_Processors: 
-    m_Interactions: 
+    m_Processors:
+    m_Interactions:
     m_SingletonActionBindings: []
     m_Flags: 0
     m_Priority: 0
@@ -255,8 +255,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 017775ea54f549142a8213f336873206, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   acceleration: 30
   maxSpeed: 10
   jumpIndicator: {fileID: 0}
