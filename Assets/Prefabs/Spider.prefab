@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 5711051967271203211}
   - component: {fileID: 7917904116254080231}
   - component: {fileID: 338414322529964476}
-  - component: {fileID: 2181430091287572519}
+  - component: {fileID: 5106016132122794014}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -296,7 +296,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &2181430091287572519
+--- !u!58 &5106016132122794014
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
