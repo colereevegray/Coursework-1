@@ -263,6 +263,11 @@ MonoBehaviour:
   jumpIndicator: {fileID: 0}
   jumpPower: 30
   jumpGravity: 5
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  stickyRadius: 1
+  surfaceHangTime: 0.45
 --- !u!50 &338414322529964476
 Rigidbody2D:
   serializedVersion: 5
