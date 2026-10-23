@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 30
-  maxSpeed: 10
+  maxSpeed: 7
   jumpIndicator: {fileID: 0}
   jumpPower: 30
   jumpGravity: 5
