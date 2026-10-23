@@ -265,4 +265,18 @@ public class Movement : MonoBehaviour
 
         return bestNormal;
     }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("EvilCenti"))
+        {
+            Vector2 knockBack = (transform.position - other.transform.position).normalized;
+            float knockBackForce = 15f;
+            rb.linearVelocity = Vector2.zero;
+            rb.AddForce(knockBack * knockBackForce, ForceMode2D.Impulse);
+
+            jumpCount -= 1;
+            text_obj.text = "Number of legs: " + jumpCount.ToString();
+        }
+    }
 }
