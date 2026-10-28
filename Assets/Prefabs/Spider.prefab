@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 5106016132122794014}
   m_Layer: 0
   m_Name: Spider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,8 +239,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.62, y: -3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4186488910757191740}
   - {fileID: 5148643542982137785}
@@ -261,6 +261,7 @@ MonoBehaviour:
   acceleration: 30
   maxSpeed: 7
   jumpIndicator: {fileID: 0}
+  text_obj: {fileID: 0}
   jumpPower: 30
   jumpGravity: 5
   rayNumber: 100

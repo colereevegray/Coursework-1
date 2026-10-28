@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using TMPro;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 public class Movement : MonoBehaviour
@@ -14,6 +15,8 @@ public class Movement : MonoBehaviour
 
     // Jump variables
     [SerializeField] private JumpIndicator jumpIndicator;
+    [SerializeField] private TextMeshProUGUI text_obj;
+    private float jumpCount;
     [SerializeField] public float jumpPower;
     [SerializeField] public float jumpGravity;
     private bool jumpRequested = false;
@@ -43,13 +46,16 @@ public class Movement : MonoBehaviour
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
         rb.freezeRotation = true;
+        jumpCount = 8;
     }
 
     void Update()
     {
-        if (jumpAction.WasPressedThisFrame())
+        if (jumpAction.WasPressedThisFrame() && jumpCount > 0)
         {
             jumpRequested = true;
+            jumpCount -= 1;
+            text_obj.text = "Number of legs: " + jumpCount.ToString();
         }
     }
     void FixedUpdate()
@@ -270,5 +276,19 @@ public class Movement : MonoBehaviour
         }
 
         return bestNormal;
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("EvilCenti"))
+        {
+            Vector2 knockBack = (transform.position - other.transform.position).normalized;
+            float knockBackForce = 15f;
+            rb.linearVelocity = Vector2.zero;
+            rb.AddForce(knockBack * knockBackForce, ForceMode2D.Impulse);
+
+            jumpCount -= 1;
+            text_obj.text = "Number of legs: " + jumpCount.ToString();
+        } 
     }
 }
