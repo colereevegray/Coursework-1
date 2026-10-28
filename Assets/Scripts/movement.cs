@@ -289,6 +289,6 @@ public class Movement : MonoBehaviour
 
             jumpCount -= 1;
             text_obj.text = "Number of legs: " + jumpCount.ToString();
-        } 
+        }
     }
 }

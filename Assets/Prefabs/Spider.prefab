@@ -272,6 +272,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   stickyRadius: 1
+  maxGlassSlopeAngle: 45
   surfaceHangTime: 0.1
 --- !u!50 &338414322529964476
 Rigidbody2D:
