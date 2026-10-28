@@ -21,7 +21,9 @@ public class Movement : MonoBehaviour
     // Wall walking Variables
     [SerializeField] private int rayNumber;
     [SerializeField] private LayerMask groundLayerMask;
+    [SerializeField] private LayerMask glassLayerMask;
     [SerializeField] float stickyRadius = 1f;
+    [SerializeField] private float maxGlassSlopeAngle;
 
     [SerializeField] private float surfaceHangTime = 0.45f;
     private float surfaceLostTimer = 0f;
@@ -180,6 +182,8 @@ public class Movement : MonoBehaviour
             orientationAngle = (transform.eulerAngles.z - 90f) * Mathf.Deg2Rad;
         }
 
+        LayerMask combinedLayerMask = groundLayerMask | glassLayerMask;
+
         for (int i = 0; i < rayCount; i++)
         {
             float currentRayAngle = (i * spread) - halfSpread;
@@ -187,9 +191,17 @@ public class Movement : MonoBehaviour
                 Mathf.Cos(orientationAngle + currentRayAngle),
                 Mathf.Sin(orientationAngle + currentRayAngle)
             );
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, activeRadius, groundLayerMask);
 
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, activeRadius, combinedLayerMask);
+            if (hit && ((glassLayerMask & (1<<hit.collider.gameObject.layer)) !=0))
+            {
+                if(Vector2.Angle(hit.normal, Vector2.up) > maxGlassSlopeAngle)
+                {
+                    hit = default;
+                }
+            }
             Debug.DrawRay(rayOrigin, rayDirection * activeRadius, hit ? Color.green : Color.red);
+
             if (hit)
             {
                 rayDirections[i] = hit;

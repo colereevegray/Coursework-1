@@ -959,7 +959,7 @@ GameObject:
   - component: {fileID: 1927832500}
   - component: {fileID: 1927832501}
   - component: {fileID: 1927832502}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: notcoolwall
   m_TagString: cantclimb
   m_Icon: {fileID: 0}

@@ -267,6 +267,9 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  glassLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
   stickyRadius: 1
   surfaceHangTime: 0.1
 --- !u!50 &338414322529964476
