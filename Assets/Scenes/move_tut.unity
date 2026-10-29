@@ -169,7 +169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7917904116254080231, guid: 474860deab11cfe43863f1840d251fe1, type: 3}
       propertyPath: text_obj
-      value:
+      value: 
       objectReference: {fileID: 1395303819}
     - target: {fileID: 8627796262451039826, guid: 474860deab11cfe43863f1840d251fe1, type: 3}
       propertyPath: m_Name
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 295286552}
   - component: {fileID: 295286551}
   - component: {fileID: 295286550}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Surface (18)
   m_TagString: cantclimb
   m_Icon: {fileID: 0}
@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 336406472}
   - component: {fileID: 336406471}
   - component: {fileID: 336406470}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Surface (9)
   m_TagString: cantclimb
   m_Icon: {fileID: 0}
@@ -864,7 +864,7 @@ GameObject:
   - component: {fileID: 435809568}
   - component: {fileID: 435809567}
   - component: {fileID: 435809566}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Surface (19)
   m_TagString: cantclimb
   m_Icon: {fileID: 0}
@@ -1031,7 +1031,7 @@ GameObject:
   - component: {fileID: 461778572}
   - component: {fileID: 461778571}
   - component: {fileID: 461778570}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Surface (20)
   m_TagString: cantclimb
   m_Icon: {fileID: 0}
@@ -1223,8 +1223,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
@@ -1350,8 +1350,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_ComponentVersion: 4
   m_LightType: 4
   m_BlendStyleIndex: 0
@@ -1443,7 +1443,7 @@ GameObject:
   - component: {fileID: 622448841}
   - component: {fileID: 622448840}
   - component: {fileID: 622448839}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Surface (17)
   m_TagString: cantclimb
   m_Icon: {fileID: 0}
@@ -1610,7 +1610,7 @@ GameObject:
   - component: {fileID: 731113631}
   - component: {fileID: 731113630}
   - component: {fileID: 731113629}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Surface (10)
   m_TagString: cantclimb
   m_Icon: {fileID: 0}
@@ -2111,7 +2111,7 @@ GameObject:
   - component: {fileID: 881821231}
   - component: {fileID: 881821230}
   - component: {fileID: 881821229}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Surface (16)
   m_TagString: cantclimb
   m_Icon: {fileID: 0}
@@ -2445,7 +2445,7 @@ GameObject:
   - component: {fileID: 1165970394}
   - component: {fileID: 1165970393}
   - component: {fileID: 1165970392}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Surface (13)
   m_TagString: cantclimb
   m_Icon: {fileID: 0}
@@ -2612,7 +2612,7 @@ GameObject:
   - component: {fileID: 1225694389}
   - component: {fileID: 1225694388}
   - component: {fileID: 1225694387}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Surface (8)
   m_TagString: cantclimb
   m_Icon: {fileID: 0}
@@ -2779,7 +2779,7 @@ GameObject:
   - component: {fileID: 1270500258}
   - component: {fileID: 1270500257}
   - component: {fileID: 1270500256}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Surface (6)
   m_TagString: cantclimb
   m_Icon: {fileID: 0}
@@ -3162,7 +3162,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1527831695
 GameObject:
@@ -3679,7 +3679,7 @@ GameObject:
   - component: {fileID: 1856405271}
   - component: {fileID: 1856405270}
   - component: {fileID: 1856405269}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Surface (12)
   m_TagString: cantclimb
   m_Icon: {fileID: 0}
@@ -3846,7 +3846,7 @@ GameObject:
   - component: {fileID: 1883833936}
   - component: {fileID: 1883833935}
   - component: {fileID: 1883833934}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Surface (14)
   m_TagString: cantclimb
   m_Icon: {fileID: 0}
@@ -4013,7 +4013,7 @@ GameObject:
   - component: {fileID: 1894433066}
   - component: {fileID: 1894433065}
   - component: {fileID: 1894433064}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Surface (15)
   m_TagString: cantclimb
   m_Icon: {fileID: 0}
@@ -4180,7 +4180,7 @@ GameObject:
   - component: {fileID: 2000205620}
   - component: {fileID: 2000205619}
   - component: {fileID: 2000205618}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Surface (11)
   m_TagString: cantclimb
   m_Icon: {fileID: 0}
@@ -4363,7 +4363,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.UI.InputSystemUIInputModule
   m_SendPointerHoverToParent: 1
   m_MoveRepeatDelay: 0.5
@@ -4394,7 +4394,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventSystem
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
@@ -4575,5 +4575,7 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1280073505}
-  - {fileID: 2125116454}
-  - {fileID: 553222165}
+  - {fileID: 2140792503}
+  - {fileID: 5808021500966360228}
+  - {fileID: 154543169}
+  - {fileID: 7149468056040702863}

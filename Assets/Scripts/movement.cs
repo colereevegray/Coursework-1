@@ -56,6 +56,7 @@ public class Movement : MonoBehaviour
             jumpRequested = true;
             jumpCount -= 1;
             text_obj.text = "Number of legs: " + jumpCount.ToString();
+            acceleration -= 3;
         }
     }
     void FixedUpdate()
@@ -287,8 +288,12 @@ public class Movement : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             rb.AddForce(knockBack * knockBackForce, ForceMode2D.Impulse);
 
-            jumpCount -= 1;
-            text_obj.text = "Number of legs: " + jumpCount.ToString();
+            if (jumpCount > 0)
+            {
+                jumpCount -= 1;
+                text_obj.text = "Number of legs: " + jumpCount.ToString();
+                acceleration -= 3;
+            }
         }
     }
 }
