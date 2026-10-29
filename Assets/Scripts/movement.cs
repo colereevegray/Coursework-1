@@ -281,7 +281,7 @@ public class Movement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("EvilCenti"))
+        if (other.gameObject.CompareTag("EvilCenti") || other.gameObject.CompareTag("Wasp"))
         {
             Vector2 knockBack = (transform.position - other.transform.position).normalized;
             float knockBackForce = 15f;
