@@ -32,6 +32,9 @@ public class Movement : MonoBehaviour
     private float surfaceLostTimer = 0f;
     private Vector2 lastValidNormal = Vector2.up;
     private float jumpLockoutTimer = 0f;
+    private float jumpDuration = 0f;
+    private bool jumpStart = false;
+    private float chargedJump = 0f;
 
     void Awake() // Apparently good practice to use for fetching other components part of the same game object, runs before Start()
     {
@@ -53,10 +56,30 @@ public class Movement : MonoBehaviour
     {
         if (jumpAction.WasPressedThisFrame() && jumpCount > 0)
         {
+            jumpStart = true;
+            jumpDuration = 0f;  
+        }
+        if (jumpStart && jumpAction.IsPressed())
+        {
+            if (!(jumpDuration >= 0.5))
+            {
+                jumpDuration += Time.deltaTime;
+            }
+            Debug.Log($"Holding for: {jumpDuration} seconds");
+        }
+        if (jumpAction.WasReleasedThisFrame() && jumpStart)
+        {
             jumpRequested = true;
             jumpCount -= 1;
             text_obj.text = "Number of legs: " + jumpCount.ToString();
             acceleration -= 3;
+            chargedJump = jumpDuration;
+            jumpDuration = 0f;
+            if (jumpCount <= 4)
+            {   
+                maxSpeed -= 1.5f;
+            }
+            jumpStart = false;
         }
     }
     void FixedUpdate()
@@ -152,9 +175,10 @@ public class Movement : MonoBehaviour
     }
 
     void PerformJump()
-    {
+    {   
+        float multiplier = jumpPower * chargedJump * 2f;
         Vector2 launchDir = jumpIndicator.LaunchDirection;
-        Vector2 jumpVelocity =  launchDir * jumpPower;
+        Vector2 jumpVelocity =  launchDir * multiplier;
 
 
         Vector2 currentVel = rb.linearVelocity;
