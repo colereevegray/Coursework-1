@@ -7463,7 +7463,7 @@ MonoBehaviour:
   rayLength: 3
   stepThreshold: 0.5
   stepSpeed: 12
-  stepHeight: 0.4
+  stepHeight: 0.1
 --- !u!1 &8812416942091125726
 GameObject:
   m_ObjectHideFlags: 0
