@@ -16,21 +16,21 @@ public class Movement : MonoBehaviour
     // Jump variables
     [SerializeField] private JumpIndicator jumpIndicator;
     [SerializeField] private TextMeshProUGUI text_obj;
-    private float jumpCount;
+    public float jumpCount;
     [SerializeField] public float jumpPower;
     [SerializeField] public float jumpGravity;
     private bool jumpRequested = false;
 
     // Wall walking Variables
     [SerializeField] private int rayNumber;
-    [SerializeField] private LayerMask groundLayerMask;
-    [SerializeField] private LayerMask glassLayerMask;
+    [SerializeField] public LayerMask groundLayerMask;
+    [SerializeField] public LayerMask glassLayerMask;
     [SerializeField] float stickyRadius = 1f;
     [SerializeField] private float maxGlassSlopeAngle;
 
     [SerializeField] private float surfaceHangTime = 0.45f;
     private float surfaceLostTimer = 0f;
-    private Vector2 lastValidNormal = Vector2.up;
+    public Vector2 lastValidNormal = Vector2.up;
     private float jumpLockoutTimer = 0f;
 
     void Awake() // Apparently good practice to use for fetching other components part of the same game object, runs before Start()
@@ -163,7 +163,7 @@ public class Movement : MonoBehaviour
         jumpLockoutTimer = 0.4f;
     }
 
-    RaycastHit2D[] getRays(int rayCount, float raySpread)
+    public RaycastHit2D[] getRays(int rayCount, float raySpread)
     {
         float activeRadius = stickyRadius;
         if (jumpLockoutTimer > 0.1f)
