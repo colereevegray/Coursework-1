@@ -85,7 +85,7 @@ ScriptedImporter:
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
-    addShadowCasters: 0
+    addShadowCasters: 1
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   asepriteImporterSettings:

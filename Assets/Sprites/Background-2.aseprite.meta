@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bf3d7808ab152e84db49e66541468ee3
+guid: 064ddce9e77b9a54eb5235b593015cc7
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -103,7 +103,7 @@ ScriptedImporter:
     addShadowCasters: 0
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
-  platformSettingsDirtyTick: 639292541295221111
+  platformSettingsDirtyTick: 639292994547125543
   singleSpriteImportData:
   - name: 
     originalName: 
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: fogBackground
+  - name: Background-2
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -138,8 +138,8 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 640
-      height: 301
-    spriteID: 553c28c5561536e40bf1786646f8409c
+      height: 306
+    spriteID: 624ada34f82153245ad6c7e72664c14e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 2217454862
+      value0: 3387309125
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: fogBackground
+    name: Background-2
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: fogBackground
+    - name: Background-2
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 640
-        height: 301
-      spriteId: 553c28c5561536e40bf1786646f8409c
+        height: 306
+      spriteId: 624ada34f82153245ad6c7e72664c14e
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -182,7 +182,7 @@ ScriptedImporter:
     overridden: 0
     ignorePlatformSupport: 0
     maxTextureSize: 16384
-    resizeAlgorithm: 1
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50

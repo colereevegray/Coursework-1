@@ -3968,12 +3968,12 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -3060667968715218147, guid: bf3d7808ab152e84db49e66541468ee3, type: 3}
+  m_Sprite: {fileID: -6117434482707387964, guid: 7628e143ca4f3b249a910937bb7780ad, type: 3}
   m_Color: {r: 0.6415094, g: 0.57613003, b: 0.493236, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 20, y: 9.40625}
+  m_Size: {x: 6.4, y: 3.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4112,7 +4112,7 @@ GameObject:
   - component: {fileID: 7878350318177595389}
   - component: {fileID: 3626916396757467156}
   m_Layer: 0
-  m_Name: fogBackground
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4127,7 +4127,7 @@ Transform:
   m_GameObject: {fileID: 6969460405286995864}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.51, y: -5.09, z: 0}
+  m_LocalPosition: {x: -0.2, y: -5.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

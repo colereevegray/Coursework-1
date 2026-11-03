@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.61, y: 0.29, z: 0}
-  m_LocalScale: {x: 1.285795, y: 1.66397, z: 1.5127}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4351182339251425267}
@@ -272,21 +272,85 @@ PrefabInstance:
       propertyPath: m_Name
       value: wasp
       objectReference: {fileID: 0}
+    - target: {fileID: 2627155579619779141, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
+      propertyPath: m_HasRenderer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627155579619779141, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
+      propertyPath: m_PreviousTrimEdge
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627155579619779141, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
+      propertyPath: m_PreviousEdgeProcessing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627155579619779141, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
+      propertyPath: m_PreviousShadowCastingSource
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627155579619779141, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
+      propertyPath: m_PreviousShadowShape2DSource
+      value: 
+      objectReference: {fileID: 7441298434618937222}
+    - target: {fileID: 2627155579619779141, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
+      propertyPath: m_PreviousShadowShape2DProviderHash
+      value: -646221079
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627155579619779141, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
+      propertyPath: managedReferences[1001].m_InitialTrim
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627155579619779141, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
+      propertyPath: 'managedReferences[4807142979510468682]'
+      value: 'Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.Provider2DCache`1[[UnityEngine.Rendering.Universal.ShadowShape2DProvider, Unity.RenderPipelines.Universal.2D.Runtime]]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627155579619779141, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
+      propertyPath: 'managedReferences[4807142979510468683]'
+      value: Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.ShadowShape2DProvider_SpriteRenderer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627155579619779141, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
+      propertyPath: managedReferences[1002].m_Provider2DCache
+      value: 4807142979510468682
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627155579619779141, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
+      propertyPath: managedReferences[4807142979510468682].m_Cache.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627155579619779141, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
+      propertyPath: managedReferences[4807142979510468682].m_Cache.Array.data[0].m_Key.m_TypeName
+      value: ShadowShape2DProvider_SpriteRenderer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627155579619779141, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
+      propertyPath: managedReferences[4807142979510468682].m_Cache.Array.data[0].m_Key.m_Component
+      value: 
+      objectReference: {fileID: 7441298434618937222}
+    - target: {fileID: 2627155579619779141, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
+      propertyPath: managedReferences[4807142979510468682].m_Cache.Array.data[0].m_Value.m_Provider
+      value: 4807142979510468683
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627155579619779141, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
+      propertyPath: managedReferences[4807142979510468682].m_Cache.Array.data[0].m_Key.m_UsesComponent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.258
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.922
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
       propertyPath: m_LocalPosition.z
@@ -328,5 +392,10 @@ PrefabInstance:
 --- !u!4 &4054415457143922799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
+  m_PrefabInstance: {fileID: 6129866107895603042}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &7441298434618937222 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3626916397498700004, guid: ddcc840a7f61ac643b1d6350d13fc355, type: 3}
   m_PrefabInstance: {fileID: 6129866107895603042}
   m_PrefabAsset: {fileID: 0}
