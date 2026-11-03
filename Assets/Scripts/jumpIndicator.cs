@@ -11,11 +11,14 @@ public class JumpIndicator : MonoBehaviour
     private bool enable;
     public float TargetAngle => targetAngle;
     public float rotateSpeed = 50f;
-    public float opacity = 0;
-    public Color col;
-    public bool jump = false;
+    private float opacity = 0;
+    private Color col;
+    private bool jump = false;
+    private float scale; 
     
     private Renderer rend;
+    private Transform size;
+    private Vector3 ogsize;
 
     void Start()
     {
@@ -26,10 +29,11 @@ public class JumpIndicator : MonoBehaviour
         if (rend != null)
         {
             col = rend.material.color;
-            col.a = 0f;
+            col.a = 0.1f;
             rend.material.color = col;
         }
-
+        size = GetComponent<Transform>();
+        ogsize = size.localScale;
     }
 
     void Update()
@@ -55,11 +59,13 @@ public class JumpIndicator : MonoBehaviour
     {
         if (jumpAction.WasPressedThisFrame())
         {
+            scale = 0;
             jump = true; 
-            opacity = 0f;
+            opacity = 0.1f;
         }
         if (jump && jumpAction.IsPressed())
         {
+            scale += Time.deltaTime * 0.1f;
             opacity += Time.deltaTime * 2f;
             opacity = Mathf.Clamp01(opacity);
             if (rend != null)
@@ -67,10 +73,15 @@ public class JumpIndicator : MonoBehaviour
                 col.a = opacity;
                 rend.material.color = col;
             }
+            if (size.localScale.x < 5 && size.localScale.y < 5 && size.localScale.z < 5)
+            {
+                size.localScale += new Vector3(scale, scale, scale);
+            }
         }
         if (jumpAction.WasReleasedThisFrame() && jump)
         {
-            opacity = 0f;
+            size.localScale = ogsize;
+            opacity = 0.1f;
             if (rend != null)
             {
                 col.a = opacity;
