@@ -136,6 +136,10 @@ PrefabInstance:
       value: 0.7905422
       objectReference: {fileID: 0}
     - target: {fileID: 445462530901999750, guid: 474860deab11cfe43863f1840d251fe1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99999833
+      objectReference: {fileID: 0}
+    - target: {fileID: 445462530901999750, guid: 474860deab11cfe43863f1840d251fe1, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.0018342963
       objectReference: {fileID: 0}
@@ -180,6 +184,10 @@ PrefabInstance:
       value: -0.010639789
       objectReference: {fileID: 0}
     - target: {fileID: 2311642006308631529, guid: 474860deab11cfe43863f1840d251fe1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999775
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311642006308631529, guid: 474860deab11cfe43863f1840d251fe1, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.0067036105
       objectReference: {fileID: 0}
@@ -196,12 +204,16 @@ PrefabInstance:
       value: 0.028138619
       objectReference: {fileID: 0}
     - target: {fileID: 3732048097549160268, guid: 474860deab11cfe43863f1840d251fe1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9999426
-      objectReference: {fileID: 0}
-    - target: {fileID: 3732048097549160268, guid: 474860deab11cfe43863f1840d251fe1, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.0107217
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577623927422105567, guid: 474860deab11cfe43863f1840d251fe1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7707732
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577623927422105567, guid: 474860deab11cfe43863f1840d251fe1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.63710964
       objectReference: {fileID: 0}
     - target: {fileID: 4680235543005817899, guid: 474860deab11cfe43863f1840d251fe1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -219,13 +231,13 @@ PrefabInstance:
       propertyPath: m_LocalRotation.x
       value: 0.06675241
       objectReference: {fileID: 0}
+    - target: {fileID: 5068957096346646336, guid: 474860deab11cfe43863f1840d251fe1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.99776965
+      objectReference: {fileID: 0}
     - target: {fileID: 5297816441974348127, guid: 474860deab11cfe43863f1840d251fe1, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.025367161
-      objectReference: {fileID: 0}
-    - target: {fileID: 5297816441974348127, guid: 474860deab11cfe43863f1840d251fe1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.99967825
       objectReference: {fileID: 0}
     - target: {fileID: 5318772124717536865, guid: 474860deab11cfe43863f1840d251fe1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1468,7 +1480,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.56
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

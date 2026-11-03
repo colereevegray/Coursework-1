@@ -54,10 +54,12 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        if (jumpCount <= 0) return;
+
         if (jumpAction.WasPressedThisFrame() && jumpCount > 0)
         {
             jumpStart = true;
-            jumpDuration = 0f;  
+            jumpDuration = 0f;
         }
         if (jumpStart && jumpAction.IsPressed())
         {
@@ -72,11 +74,11 @@ public class Movement : MonoBehaviour
             jumpRequested = true;
             jumpCount -= 1;
             text_obj.text = "Number of legs: " + jumpCount.ToString();
-            acceleration -= 3;
+            acceleration -= 1;
             chargedJump = jumpDuration;
             jumpDuration = 0f;
             if (jumpCount <= 4)
-            {   
+            {
                 maxSpeed -= 1.5f;
             }
             jumpStart = false;
@@ -85,10 +87,10 @@ public class Movement : MonoBehaviour
     void FixedUpdate()
     {
         // orientationAngle = (transform.eulerAngles.z - 90f) * Mathf.Deg2Rad;
-        Vector2 input = moveAction.ReadValue<Vector2>();
+        Vector2 input = (jumpCount > 0) ? moveAction.ReadValue<Vector2>() : Vector2.zero;
         Vector2 targetVelocity = transform.right*(input.x * maxSpeed); // restricts movement to left and right keys
         rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, targetVelocity, acceleration * Time.deltaTime);
-        Vector2 normal = DetectSurface(rayNumber, 2.5f*Mathf.PI/3, lastValidNormal);
+        Vector2 normal = (jumpCount > 0) ? DetectSurface(rayNumber, 2.5f * Mathf.PI / 3, lastValidNormal) : Vector2.zero;
 
         if (jumpRequested)
         {
@@ -175,7 +177,7 @@ public class Movement : MonoBehaviour
     }
 
     void PerformJump()
-    {   
+    {
         float multiplier = jumpPower * chargedJump * 2f;
         Vector2 launchDir = jumpIndicator.LaunchDirection;
         Vector2 jumpVelocity =  launchDir * multiplier;
