@@ -14,8 +14,8 @@ public class JumpIndicator : MonoBehaviour
     private float opacity = 0;
     private Color col;
     private bool jump = false;
-    private float scale; 
-    
+    private float scale;
+
     private Renderer rend;
     private Transform size;
     private Vector3 ogsize;
@@ -60,7 +60,7 @@ public class JumpIndicator : MonoBehaviour
         if (jumpAction.WasPressedThisFrame())
         {
             scale = 0;
-            jump = true; 
+            jump = true;
             opacity = 0.1f;
         }
         if (jump && jumpAction.IsPressed())
