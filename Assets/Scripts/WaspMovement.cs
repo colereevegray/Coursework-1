@@ -18,16 +18,16 @@ public class WaspMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector2 targetVelocity = transform.up*( maxSpeed * direction); 
+        Vector2 targetVelocity = transform.up*( maxSpeed * direction);
         rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, targetVelocity, acceleration * Time.deltaTime);
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (!other.gameObject.CompareTag("Player"))
+        if (!other.gameObject.CompareTag("Player"))// && !other.gameObject.CompareTag("EvilCenti"))
         {
             direction = direction * -1;
         }
     }
-    
+
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4984711394566011122}
   - component: {fileID: 5929065142669434729}
   - component: {fileID: 4751556806981893657}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: centipede
   m_TagString: EvilCenti
   m_Icon: {fileID: 0}
