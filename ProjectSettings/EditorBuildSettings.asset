@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/mainmenu.unity
+    guid: 105f40b2d08917c4ab5cbc83b4811c7e
+  - enabled: 1
+    path: Assets/Scenes/levelmenu.unity
+    guid: e3f43cbe1d703c742a0d003072cc7e46
+  - enabled: 1
     path: Assets/Scenes/move_tut.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
@@ -29,11 +35,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/level8.unity
     guid: 91749cf1499d1bd46aa47849d796f303
-  - enabled: 1
-    path: Assets/Scenes/mainmenu.unity
-    guid: 105f40b2d08917c4ab5cbc83b4811c7e
-  - enabled: 1
-    path: Assets/Scenes/levelmenu.unity
-    guid: e3f43cbe1d703c742a0d003072cc7e46
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
