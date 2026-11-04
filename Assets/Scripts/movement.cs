@@ -36,11 +36,17 @@ public class Movement : MonoBehaviour
     private bool jumpStart = false;
     private float chargedJump = 0f;
 
+    [SerializeField] private ParticleSystem legExplosionParticles;
+
     void Awake() // Apparently good practice to use for fetching other components part of the same game object, runs before Start()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         jumpIndicator = GetComponentInChildren<JumpIndicator>();
+        if (legExplosionParticles == null)
+        {
+            legExplosionParticles = GetComponentInChildren<ParticleSystem>();
+        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -75,6 +81,8 @@ public class Movement : MonoBehaviour
             acceleration -= 1;
             chargedJump = jumpDuration;
             jumpDuration = 0f;
+
+
             if (jumpCount <= 4)
             {
                 maxSpeed -= 1.5f;
@@ -176,13 +184,14 @@ public class Movement : MonoBehaviour
 
     void PerformJump()
     {
+
         float multiplier = jumpPower * chargedJump * 2f;
         Vector2 launchDir = jumpIndicator.LaunchDirection;
         Vector2 jumpVelocity =  launchDir * multiplier;
 
 
         Vector2 currentVel = rb.linearVelocity;
-
+        TriggerLegLossEffect(-launchDir);
         rb.linearVelocity = currentVel + jumpVelocity;
         surfaceLostTimer = 0f;
         jumpLockoutTimer = 0.4f;
@@ -318,6 +327,19 @@ public class Movement : MonoBehaviour
                 text_obj.text = "Number of legs: " + jumpCount.ToString();
                 acceleration -= 3;
             }
+        }
+    }
+
+    void TriggerLegLossEffect(Vector2 launchDir)
+    {
+        if(legExplosionParticles != null)
+        {
+            if (launchDir != Vector2.zero)
+            {
+                legExplosionParticles.transform.up = launchDir;
+            }
+            legExplosionParticles.Clear();
+            legExplosionParticles.Play();
         }
     }
 }
