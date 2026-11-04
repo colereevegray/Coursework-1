@@ -36,6 +36,7 @@ public class Movement : MonoBehaviour
     private bool jumpStart = false;
     private float chargedJump = 0f;
 
+    [SerializeField] private AudioSource blastAudioSource;
     [SerializeField] private ParticleSystem legExplosionParticles;
 
     void Awake() // Apparently good practice to use for fetching other components part of the same game object, runs before Start()
@@ -46,6 +47,10 @@ public class Movement : MonoBehaviour
         if (legExplosionParticles == null)
         {
             legExplosionParticles = GetComponentInChildren<ParticleSystem>();
+        }
+        if (blastAudioSource == null)
+        {
+            blastAudioSource = GetComponent<AudioSource>();
         }
     }
 
@@ -191,10 +196,11 @@ public class Movement : MonoBehaviour
 
 
         Vector2 currentVel = rb.linearVelocity;
-        TriggerLegLossEffect(-launchDir);
+
         rb.linearVelocity = currentVel + jumpVelocity;
         surfaceLostTimer = 0f;
         jumpLockoutTimer = 0.4f;
+        TriggerLegLossEffect(-launchDir);
     }
 
     public RaycastHit2D[] getRays(int rayCount, float raySpread)
@@ -340,6 +346,15 @@ public class Movement : MonoBehaviour
             }
             legExplosionParticles.Clear();
             legExplosionParticles.Play();
+        }
+
+        if (blastAudioSource != null && blastAudioSource.clip != null)
+        {
+            blastAudioSource.pitch = UnityEngine.Random.Range(0.85f, 1.15f);
+
+            blastAudioSource.volume = UnityEngine.Random.Range(0.8f, 1.0f);
+
+            blastAudioSource.PlayOneShot(blastAudioSource.clip);
         }
     }
 }
