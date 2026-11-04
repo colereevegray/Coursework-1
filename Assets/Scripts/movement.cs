@@ -15,7 +15,6 @@ public class Movement : MonoBehaviour
 
     // Jump variables
     [SerializeField] private JumpIndicator jumpIndicator;
-    [SerializeField] private TextMeshProUGUI text_obj;
     public int jumpCount;
     [SerializeField] public float jumpPower;
     [SerializeField] public float jumpGravity;
@@ -330,7 +329,6 @@ public class Movement : MonoBehaviour
             if (jumpCount > 0)
             {
                 jumpCount -= 1;
-                text_obj.text = "Number of legs: " + jumpCount.ToString();
                 acceleration -= 3;
             }
         }
