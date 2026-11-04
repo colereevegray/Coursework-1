@@ -1,10 +1,34 @@
 fileFormatVersion: 2
-guid: eba61828686c93849bbeb879e7f96782
+guid: 4b6f07679e775e3449ce56bcc537c0ee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -943546701817830115
-    second: experimental tilemap_0
+      213: -7321579806638348879
+    second: LegUI 1_0
+  - first:
+      213: 5165622120004815881
+    second: LegUI 1_1
+  - first:
+      213: 1747876648393026338
+    second: LegUI 1_2
+  - first:
+      213: 4828645640610370969
+    second: LegUI 1_3
+  - first:
+      213: 3752350208596383115
+    second: LegUI 1_4
+  - first:
+      213: -8145050512762357097
+    second: LegUI 1_5
+  - first:
+      213: 4395087460376536782
+    second: LegUI 1_6
+  - first:
+      213: -2494792521130707414
+    second: LegUI 1_7
+  - first:
+      213: -8822877839103777884
+    second: LegUI 1_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,10 +72,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -77,7 +101,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -98,30 +122,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: experimental tilemap_0
+      name: LegUI 1_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 68
-        width: 20
-        height: 20
+        x: 0
+        y: 378
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +141,196 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d1528291649d7e2f0800000000000000
-      internalID: -943546701817830115
+      spriteID: 1b5e5ae05f5846a90800000000000000
+      internalID: -7321579806638348879
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: experimental tilemap_1
+      name: LegUI 1_1
       rect:
         serializedVersion: 2
-        x: 40
-        y: 68
-        width: 20
-        height: 20
+        x: 0
+        y: 336
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90c89c213f9ffa740800000000000000
+      internalID: 5165622120004815881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LegUI 1_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 294
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22baaa21d84b14810800000000000000
+      internalID: 1747876648393026338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LegUI 1_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 252
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 995d1da70abc20340800000000000000
+      internalID: 4828645640610370969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LegUI 1_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 210
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b85104842a6031430800000000000000
+      internalID: 3752350208596383115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LegUI 1_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 168
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79abf2586b7f6fe80800000000000000
+      internalID: -8145050512762357097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LegUI 1_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 126
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec6648052cc7efc30800000000000000
+      internalID: 4395087460376536782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LegUI 1_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 84
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a26f3b58b67b06dd0800000000000000
+      internalID: -2494792521130707414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LegUI 1_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 42
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a3ad87d957de8580800000000000000
+      internalID: -8822877839103777884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LegUI 1_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,162 +339,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a51fff4d6a2ebee4e9620805ea0084d2
-      internalID: 566107484
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: experimental tilemap_2
-      rect:
-        serializedVersion: 2
-        x: 60
-        y: 68
-        width: 20
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1ff04c06c0001274ab272aae7fa5a422
-      internalID: 678245996
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: experimental tilemap_4
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 48
-        width: 20
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5d847f82e1bf9e145ad318d316c5fd87
-      internalID: 326842511
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: experimental tilemap_5
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 48
-        width: 20
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3b0241d2fb248b84389bb7a09f49d5e5
-      internalID: 364286838
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: experimental tilemap_6
-      rect:
-        serializedVersion: 2
-        x: 60
-        y: 48
-        width: 20
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b74728ac0a4d690489e9eb98eb510ff7
-      internalID: 715051569
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: experimental tilemap_8
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 28
-        width: 20
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f6aeb507c803f9c45b9414b9d6ca2426
-      internalID: 1374665651
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: experimental tilemap_9
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 28
-        width: 20
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 56ca0bc89d33d0547b102ff0327cc1dd
-      internalID: -587247552
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: experimental tilemap_10
-      rect:
-        serializedVersion: 2
-        x: 60
-        y: 28
-        width: 20
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 933f75c54c3208c40af8f9176bbae43b
-      internalID: 206491039
+      spriteID: 7f2d23c7dd627b547956d9503af81775
+      internalID: 1853517718
       vertices: []
       indices: 
       edges: []
@@ -316,7 +349,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ce612d2e67beaa349974d089deb0c9f5
+    spriteID: 0362bc661e4aec146b90e4c174ce32ca
     internalID: 0
     vertices: []
     indices: 
@@ -326,20 +359,18 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":20.0,"y":20.0},"gridSpriteOffset":{"x":20.0,"y":12.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":42.0,"y":42.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      experimental tilemap_0: -943546701817830115
-      experimental tilemap_1: 566107484
-      experimental tilemap_10: 206491039
-      experimental tilemap_11: -9061813
-      experimental tilemap_2: 678245996
-      experimental tilemap_3: 1114864806
-      experimental tilemap_4: 326842511
-      experimental tilemap_5: 364286838
-      experimental tilemap_6: 715051569
-      experimental tilemap_7: -263326794
-      experimental tilemap_8: 1374665651
-      experimental tilemap_9: -587247552
+      LegUI 1_0: -7321579806638348879
+      LegUI 1_1: 5165622120004815881
+      LegUI 1_2: 1747876648393026338
+      LegUI 1_3: 4828645640610370969
+      LegUI 1_4: 3752350208596383115
+      LegUI 1_5: -8145050512762357097
+      LegUI 1_6: 4395087460376536782
+      LegUI 1_7: -2494792521130707414
+      LegUI 1_8: -8822877839103777884
+      LegUI 1_9: 1853517718
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

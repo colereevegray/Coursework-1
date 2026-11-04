@@ -54,7 +54,7 @@ public class SpiderLegController : MonoBehaviour
         if (movementScript == null) return;
 
 
-        int activeLegCount = Mathf.Clamp((int)movementScript.jumpCount, 0, legs.Count);
+        int activeLegCount = Mathf.Clamp(movementScript.jumpCount, 0, legs.Count);
         LayerMask combinedMask = movementScript.groundLayerMask | movementScript.glassLayerMask;
 
         bool colliderSelect = activeLegCount ==0;

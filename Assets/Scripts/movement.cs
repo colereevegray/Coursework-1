@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
     // Jump variables
     [SerializeField] private JumpIndicator jumpIndicator;
     [SerializeField] private TextMeshProUGUI text_obj;
-    public float jumpCount;
+    public int jumpCount;
     [SerializeField] public float jumpPower;
     [SerializeField] public float jumpGravity;
     private bool jumpRequested = false;
@@ -67,13 +67,11 @@ public class Movement : MonoBehaviour
             {
                 jumpDuration += Time.deltaTime;
             }
-            Debug.Log($"Holding for: {jumpDuration} seconds");
         }
         if (jumpAction.WasReleasedThisFrame() && jumpStart)
         {
             jumpRequested = true;
             jumpCount -= 1;
-            text_obj.text = "Number of legs: " + jumpCount.ToString();
             acceleration -= 1;
             chargedJump = jumpDuration;
             jumpDuration = 0f;
