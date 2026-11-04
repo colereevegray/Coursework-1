@@ -148,7 +148,7 @@ MonoBehaviour:
     m_Flags: 0
     m_Priority: 0
   jumpAction:
-    m_Name: 
+    m_Name: Jump
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 105b4121-fcf2-460e-9b47-0e9678c64f12
@@ -160,9 +160,6 @@ MonoBehaviour:
   rotateAround: {fileID: 5711051967271203211}
   targetAngle: 0
   rotateSpeed: 50
-  opacity: 0
-  col: {r: 0, g: 0, b: 0, a: 0}
-  jump: 0
 --- !u!1 &364036404335860832
 GameObject:
   m_ObjectHideFlags: 0
@@ -7254,7 +7251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 017775ea54f549142a8213f336873206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 34
+  acceleration: 43
   maxSpeed: 7
   jumpIndicator: {fileID: 0}
   text_obj: {fileID: 0}
