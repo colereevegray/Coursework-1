@@ -679,7 +679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7917904116254080231, guid: 474860deab11cfe43863f1840d251fe1, type: 3}
       propertyPath: text_obj
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 8142863905347675132, guid: 474860deab11cfe43863f1840d251fe1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1109,8 +1109,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
@@ -1301,8 +1301,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_ComponentVersion: 4
   m_LightType: 4
   m_BlendStyleIndex: 0
@@ -1850,9 +1850,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: invisiblewall
       objectReference: {fileID: 0}
-    - target: {fileID: 3060764410710786920, guid: 6d68985af25aee342a12de3ae164a9d7, type: 3}
-      propertyPath: m_TagString
-      value: Respawn
+    - target: {fileID: 7815526920557573976, guid: 6d68985af25aee342a12de3ae164a9d7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8959584051513144015, guid: 6d68985af25aee342a12de3ae164a9d7, type: 3}
       propertyPath: m_LocalScale.x
@@ -1860,11 +1860,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8959584051513144015, guid: 6d68985af25aee342a12de3ae164a9d7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.45
+      value: -1.34
       objectReference: {fileID: 0}
     - target: {fileID: 8959584051513144015, guid: 6d68985af25aee342a12de3ae164a9d7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.32
+      value: -8.34
       objectReference: {fileID: 0}
     - target: {fileID: 8959584051513144015, guid: 6d68985af25aee342a12de3ae164a9d7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1901,7 +1901,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3060764410710786920, guid: 6d68985af25aee342a12de3ae164a9d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1608442265}
   m_SourcePrefab: {fileID: 100100000, guid: 6d68985af25aee342a12de3ae164a9d7, type: 3}
 --- !u!1001 &941547133
 PrefabInstance:
@@ -2604,6 +2607,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1 &1608442264 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3060764410710786920, guid: 6d68985af25aee342a12de3ae164a9d7, type: 3}
+  m_PrefabInstance: {fileID: 903122439}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1608442265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608442264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79185f1fdd183284cb39b04309dac310, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonController
+  sceneName:
 --- !u!1 &1694544554
 GameObject:
   m_ObjectHideFlags: 0
