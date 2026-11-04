@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 public class Movement : MonoBehaviour
 {
     Rigidbody2D rb;
@@ -332,8 +333,16 @@ public class Movement : MonoBehaviour
                 acceleration -= 3;
             }
         }
+        if (other.gameObject.CompareTag("Respawn"))
+        {
+            ReloadCurrentScene();
+        }
     }
 
+    void ReloadCurrentScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     void TriggerLegLossEffect(Vector2 launchDir)
     {
         if(legExplosionParticles != null)
