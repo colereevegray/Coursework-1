@@ -7256,7 +7256,7 @@ MonoBehaviour:
   jumpIndicator: {fileID: 0}
   text_obj: {fileID: 0}
   jumpCount: 0
-  jumpPower: 30
+  jumpPower: 40
   jumpGravity: 5
   rayNumber: 100
   groundLayerMask:

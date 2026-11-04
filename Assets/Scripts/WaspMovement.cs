@@ -7,6 +7,8 @@ public class WaspMovement : MonoBehaviour
     private Rigidbody2D rb;
     private float maxSpeed = 5f;
     private float acceleration = 12f;
+    private float lastFlipTime = -999f;
+    private float flipCooldown = 0.2f;
 
     void Start()
     {
@@ -26,7 +28,11 @@ public class WaspMovement : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Player"))// && !other.gameObject.CompareTag("EvilCenti"))
         {
-            direction = direction * -1;
+            if (Time.time - lastFlipTime > flipCooldown)
+            {
+                direction *= -1f;
+                lastFlipTime = Time.time;
+            }
         }
     }
 
